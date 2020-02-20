@@ -1,0 +1,28 @@
+
+<h3>材料・調味料追加</h3>
+
+<%= form_for @user_ingredient, url: ingredients_path do |f| %>
+  <div class="field">
+      <%= label :name, "材料・調味料" %><br />
+      <%= text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity, "分量" %><br />
+    <%= f.text_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gram, "g" %><br />
+    <%= f.number_field :gram %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expiration_date, '賞味・消費期限' %><br />
+    <%= f.date_field :expiration_date, value: Date.current %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit '追加' %>
+  </div>
+<% end %>

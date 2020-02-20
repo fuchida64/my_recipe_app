@@ -4,6 +4,9 @@ class User < ApplicationRecord
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+    has_many :user_ingredients, dependent: :destroy
+    has_many :ingredients, through: :user_ingredients
+
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
     validates :name,  presence: true, length: { maximum: 10 },

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  quantity: MyString
+  gram: 1
+  expiration_date: 2020-02-19
+
+two:
+  name: MyString
+  quantity: MyString
+  gram: 1
+  expiration_date: 2020-02-19
