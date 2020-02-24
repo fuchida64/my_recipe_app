@@ -1,28 +1,48 @@
 
 <h3>材料・調味料追加</h3>
 
-<%= form_for @user_ingredient, url: ingredients_path do |f| %>
+<%= form_for @ingredient do |ingredient| %>
   <div class="field">
-      <%= label :name, "材料・調味料" %><br />
-      <%= text_field :name %>
+      <%= ingredient.label :name, "材料・調味料" %><br />
+      <%= ingredient.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= f.label :quantity, "分量" %><br />
-    <%= f.text_field :quantity %>
-  </div>
+  <%= fields_for @user_ingredient do |user_ingredient| %>
+    <div class="field">
+      <%= user_ingredient.label :quantity, "分量" %><br />
+      <%= user_ingredient.text_field :quantity %>
+    </div>
 
-  <div class="field">
-    <%= f.label :gram, "g" %><br />
-    <%= f.number_field :gram %>
-  </div>
+    <div class="field">
+      <%= user_ingredient.label :gram, "g" %><br />
+      <%= user_ingredient.number_field :gram %>
+    </div>
 
-  <div class="field">
-    <%= f.label :expiration_date, '賞味・消費期限' %><br />
-    <%= f.date_field :expiration_date, value: Date.current %>
-  </div>
+    <div class="field">
+      <%= user_ingredient.label :expiration_date, '賞味・消費期限' %><br />
+      <%= user_ingredient.date_field :expiration_date, value: Date.current %>
+    </div>
+  <% end %>
 
   <div class="actions">
-    <%= f.submit '追加' %>
+    <%= ingredient.submit '追加' %>
   </div>
 <% end %>
+
+<h3>ざいりょう一覧</h3>
+<table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
+  <tr>
+    <th bgcolor="#EE0000"><font color="#FFFFFF">材料名</font></th>
+    <th bgcolor="#EE0000" width="150"><font color="#FFFFFF">分量</font></th>
+    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">g</font></th>
+    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">期限</font></th>
+  </tr>
+  <% @user_ingredients.each do |ingredient| %>
+    <tr>
+      <td bgcolor="#99CC00" align="right" nowrap><%= ingredient.ingredient.id %><%= ingredient.ingredient.name %></td>
+      <td bgcolor="#FFFFFF" valign="top" width="150"><%= ingredient.quantity %></td>
+      <td bgcolor="#FFFFFF" valign="top" width="200"><%= ingredient.gram %></td>
+      <td bgcolor="#FFFFFF" valign="top" width="200"><%= ingredient.expiration_date %></td>
+    </tr>
+  <% end %>
+</table>
