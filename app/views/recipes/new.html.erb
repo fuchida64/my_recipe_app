@@ -1,0 +1,11 @@
+<h1>レシピ作成ページ</h1>
+<%= form_for @recipe do |recipe| %>
+  <div class="field">
+      <%= recipe.label :title, "タイトル" %><br />
+      <%= recipe.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= recipe.submit '追加' %>
+  </div>
+<% end %>

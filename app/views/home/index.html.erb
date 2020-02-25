@@ -1,10 +1,3 @@
 <h1>Hello, My_recipe</h1>
 
-<% if user_signed_in? %>
-  <%= current_user.name %>
-  <%= link_to 'my page', user_path(current_user) %>
-  <%= link_to 'logout', destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？" %>
-<% else %>
-  <%= link_to 'login', new_user_session_path %>
-  <%= link_to 'sign up', new_user_registration_path %>
-<% end %>
+
