@@ -1,0 +1,14 @@
+
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+       <th>手順</th>
+       <th></th>
+    </tr>
+    <%= f.nested_fields_for :recipe_procedures, wrapper_tag: :tr do |procedure| %>
+      <td><%= procedure.text_field   :instruction,     class: 'form-control' %></td>
+      <td><%= procedure.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
+    <% end %>
+</tbody>
+</table>
+<%= f.add_nested_fields_link :recipe_procedures, 'Add new', class: 'btn btn-primary', role: 'button' %>

@@ -64,4 +64,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # original
 # user registration login
 gem 'devise'
-gem 'rb-readline'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# dynamic forms
+gem 'nested_form_fields'
+

@@ -10,8 +10,9 @@
       <%= category.label :name, "カテゴリー" %><br />
       <%= category.text_field :name %>
     </div>
-
   <% end %>
+
+  <%= render 'recipe_procedure_fields', f: recipe %>
 
   <div class="actions">
     <%= recipe.submit '追加' %>

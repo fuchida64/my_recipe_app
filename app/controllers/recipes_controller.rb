@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @category = Category.new
+    recipe_procedures = @recipe.recipe_procedures.build
   end
 
   def create
@@ -41,7 +42,10 @@ class RecipesController < ApplicationController
 
   private
     def recipe_params
-      params.require(:recipe).permit(:title)
+      params.require(:recipe).permit(
+        :title,
+        recipe_procedures_attributes: [:id, :instruction, :_destroy]
+        )
     end
 
     def category_params
