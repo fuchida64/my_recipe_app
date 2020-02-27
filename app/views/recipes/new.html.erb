@@ -5,6 +5,16 @@
       <%= recipe.text_field :title %>
   </div>
 
+  <div class="field">
+    <%= recipe.label :description, "説明" %><br />
+    <%= recipe.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= recipe.label :cooking_time, "時間" %><br />
+    <%= recipe.number_field :cooking_time %>
+  </div>
+
   <%= fields_for @category do |category| %>
     <div class="field">
       <%= category.label :name, "カテゴリー" %><br />

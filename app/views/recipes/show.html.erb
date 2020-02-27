@@ -1,0 +1,7 @@
+
+<p>レシピ名：<%= @recipe.title %></p>
+<p>カテゴリー：<%= @recipe.category.name %></p>
+
+<% @recipe.recipe_procedures.each.with_index(1) do |procedure, i| %>
+  <p><%= "#{i} #{procedure.instruction}" %></p>
+<% end %>
