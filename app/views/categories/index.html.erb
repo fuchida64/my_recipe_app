@@ -1,0 +1,14 @@
+<h1>カテゴリー一覧</h1>
+
+<table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
+  <tr>
+    <th bgcolor="#EE0000"><font color="#FFFFFF">id</font></th>
+    <th bgcolor="#EE0000" width="150"><font color="#FFFFFF">カテゴリー</font></th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td bgcolor="#FFFFFF" valign="top" width="150"><%= category.id %></td>
+      <td bgcolor="#FFFFFF" valign="top" width="200"><%= category.name %></td>
+    </tr>
+  <% end %>
+</table>

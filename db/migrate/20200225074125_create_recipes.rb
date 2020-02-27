@@ -12,6 +12,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.integer :monthly_access
       t.integer :total_access
       t.integer :user_id
+      t.integer :category_id
 
       t.timestamps
     end

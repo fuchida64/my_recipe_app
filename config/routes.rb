@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'categories/index'
   root 'home#index'
 
   devise_for :users, controllers: {
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :ingredients, only: [:index, :create]
   resources :recipes, only: [:index, :new, :create]
+  resources :categories, only: [:index]
 end
