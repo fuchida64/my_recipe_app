@@ -6,6 +6,7 @@
        <th></th>
     </tr>
     <%= f.nested_fields_for :recipe_procedures, wrapper_tag: :tr do |procedure| %>
+      <td><%= procedure.file_field   :image,     class: 'form-control' %></td>
       <td><%= procedure.text_field   :instruction,     class: 'form-control' %></td>
       <td><%= procedure.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
     <% end %>

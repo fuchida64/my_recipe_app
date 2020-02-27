@@ -6,6 +6,11 @@
   </div>
 
   <div class="field">
+    <%= recipe.label :image, "画像" %><br />
+    <%= recipe.file_field :image %>
+  </div>
+
+  <div class="field">
     <%= recipe.label :description, "説明" %><br />
     <%= recipe.text_field :description %>
   </div>
@@ -21,6 +26,10 @@
       <%= category.text_field :name %>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= recipe.number_field :servings_for %> 人数
+  </div>
 
   <%= render 'recipe_ingredients_fields', f: recipe %>
   <%= render 'recipe_procedures_fields', f: recipe %>

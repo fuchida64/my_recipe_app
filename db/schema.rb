@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_133059) do
 
   create_table "recipe_procedures", force: :cascade do |t|
     t.string "instruction"
-    t.integer "sequence_num"
+    t.string "image"
     t.integer "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_133059) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
+    t.string "image"
     t.string "description"
     t.integer "servings_for"
     t.integer "cooking_time"

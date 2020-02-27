@@ -4,16 +4,16 @@
   <tr>
     <th bgcolor="#EE0000"><font color="#FFFFFF">id</font></th>
     <th bgcolor="#EE0000" width="150"><font color="#FFFFFF">タイトル</font></th>
-    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">ユーザーid</font></th>
-    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">カテゴリーid</font></th>
+    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">ユーザー名</font></th>
+    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">カテゴリー</font></th>
     <th bgcolor="#EE0000" width="200"><font color="#FFFFFF"></font></th>
   </tr>
   <% @recipes.each do |recipe| %>
     <tr>
       <td bgcolor="#FFFFFF" valign="top" width="150"><%= recipe.id %></td>
       <td bgcolor="#FFFFFF" valign="top" width="200"><%= recipe.title %></td>
-      <td bgcolor="#FFFFFF" valign="top" width="200"><%= recipe.user_id %></td>
-      <td bgcolor="#FFFFFF" valign="top" width="200"><%= recipe.category_id %></td>
+      <td bgcolor="#FFFFFF" valign="top" width="200"><%= recipe.user.name %></td>
+      <td bgcolor="#FFFFFF" valign="top" width="200"><%= recipe.category.name %></td>
       <td bgcolor="#FFFFFF" valign="top" width="200">
         <%= link_to 'show', recipe_path(recipe) %>
       </td>

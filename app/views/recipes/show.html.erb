@@ -1,8 +1,10 @@
 
 <p>レシピ名：<%= @recipe.title %></p>
+<%= image_tag @recipe.image.url, :size =>'320x480' if @recipe.image? %>
 <p>カテゴリー：<%= @recipe.category.name %></p>
 
 <p>材料</p>
+<p><%= @recipe.servings_for %>人分</p>
 <% @recipe.recipe_ingredients.each.with_index(1) do |ingredient, i| %>
   <p><%= "#{i} #{ingredient.ingredient.name} : #{ingredient.quantity}" %></p>
 <% end %>
@@ -10,4 +12,5 @@
 <p>手順</p>
 <% @recipe.recipe_procedures.each.with_index(1) do |procedure, i| %>
   <p><%= "#{i} #{procedure.instruction}" %></p>
+  <p><%= image_tag procedure.image.url, :size =>'50x50' if procedure.image? %></p>
 <% end %>

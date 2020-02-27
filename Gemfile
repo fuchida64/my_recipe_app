@@ -64,8 +64,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # original
 # user registration login
 gem 'devise'
-# Use jquery as the JavaScript library
+# use jquery as the JavaScript library
 gem 'jquery-rails'
 # dynamic forms
 gem 'nested_form_fields'
+# imgage upload
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
 
