@@ -1,0 +1,16 @@
+
+
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+       <th>材料・調味料</th>
+       <th>分量</th>
+    </tr>
+    <%= f.nested_fields_for :recipe_ingredients, wrapper_tag: :tr do |recipe_ingredient| %>
+      <td><%= recipe_ingredient.text_field   :name,     class: 'form-control' %></td>
+      <td><%= recipe_ingredient.text_field   :quantity,     class: 'form-control' %></td>
+      <td><%= recipe_ingredient.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
+    <% end %>
+  </tbody>
+</table>
+<%= f.add_nested_fields_link :recipe_ingredients, 'Add new', class: 'btn btn-primary', role: 'button' %>

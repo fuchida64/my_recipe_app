@@ -22,7 +22,8 @@
     </div>
   <% end %>
 
-  <%= render 'recipe_procedure_fields', f: recipe %>
+  <%= render 'recipe_ingredients_fields', f: recipe %>
+  <%= render 'recipe_procedures_fields', f: recipe %>
 
   <div class="actions">
     <%= recipe.submit '追加' %>

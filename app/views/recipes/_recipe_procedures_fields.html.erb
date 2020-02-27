@@ -9,6 +9,6 @@
       <td><%= procedure.text_field   :instruction,     class: 'form-control' %></td>
       <td><%= procedure.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
     <% end %>
-</tbody>
+  </tbody>
 </table>
 <%= f.add_nested_fields_link :recipe_procedures, 'Add new', class: 'btn btn-primary', role: 'button' %>

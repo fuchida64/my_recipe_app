@@ -2,6 +2,12 @@
 <p>レシピ名：<%= @recipe.title %></p>
 <p>カテゴリー：<%= @recipe.category.name %></p>
 
+<p>材料</p>
+<% @recipe.recipe_ingredients.each.with_index(1) do |ingredient, i| %>
+  <p><%= "#{i} #{ingredient.ingredient.name} : #{ingredient.quantity}" %></p>
+<% end %>
+
+<p>手順</p>
 <% @recipe.recipe_procedures.each.with_index(1) do |procedure, i| %>
   <p><%= "#{i} #{procedure.instruction}" %></p>
 <% end %>

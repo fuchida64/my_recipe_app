@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @category = Category.new
     recipe_procedures = @recipe.recipe_procedures.build
+    recipe_ingredients = @recipe.recipe_ingredients.build
   end
 
   def create
@@ -30,6 +31,23 @@ class RecipesController < ApplicationController
       render 'new'
     end
 
+    #材料存在チェック・作成
+    @recipe.recipe_ingredients.each do |ingredient|
+      @ingredient = Ingredient.new(name: ingredient.name)
+      if @existing_ingredient = Ingredient.find_by(name: ingredient.name)
+        flash[:existing_ingredient] = "#{ingredient.name} exits"
+        ingredient.ingredient_id = @existing_ingredient.id
+
+      elsif @ingredient.save
+        flash[:ingredient_success] = "ingredient create success"
+        ingredient.ingredient_id = @ingredient.id
+
+      else
+        flash[:fail] = "ingredient create fail"
+        render 'new'
+      end
+    end
+
     #レシピ作成
     if @recipe.save
       flash[:create] = "recipe create success"
@@ -47,8 +65,9 @@ class RecipesController < ApplicationController
   private
     def recipe_params
       params.require(:recipe).permit(
-        :title,
-        recipe_procedures_attributes: [:id, :instruction, :_destroy]
+        :title, :description, :cooking_time,
+        recipe_procedures_attributes: [:id, :instruction, :_destroy],
+        recipe_ingredients_attributes: [:id, :quantity, :ingredient_id, :_destroy, :name]
         )
     end
 
