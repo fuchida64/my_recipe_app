@@ -8,7 +8,7 @@
     </tr>
     <%= f.nested_fields_for :recipe_procedures, wrapper_tag: :tr do |procedure| %>
       <td><%= procedure.text_field   :instruction,     class: 'form-control' %></td>
-      <td><%= procedure.file_field   :image,     class: 'form-control' %></td>
+      <td><%= procedure.file_field   :image,    class: 'form-control' %></td>
       <td><%= procedure.remove_nested_fields_link '×', class: 'btn btn-danger', role: 'button' %></td>
     <% end %>
   </tbody>

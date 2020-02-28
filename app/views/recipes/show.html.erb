@@ -11,7 +11,9 @@
       <li class="nav-item"><a href="#" class="nav-link">favorite</a></li>
       <li class="nav-item"><a href="#" class="nav-link">cook</a></li>
       <% if @recipe.user.id == current_user.id %>
-        <li class="nav-item"><a href="#" class="nav-link">edit</a></li>
+        <li class="nav-item">
+          <%= link_to "edit", edit_recipe_path(@recipe), class: "nav-link" %>
+        </li>
       <% end %>
     </ul>
   </div>

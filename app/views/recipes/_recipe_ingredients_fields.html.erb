@@ -9,6 +9,7 @@
       <th></th>
     </tr>
     <%= f.nested_fields_for :recipe_ingredients, wrapper_tag: :tr do |recipe_ingredient| %>
+      <%= recipe_ingredient.hidden_field :ingredient_id %>
       <td><%= recipe_ingredient.text_field   :name,     class: 'form-control' %></td>
       <td><%= recipe_ingredient.text_field   :quantity,     class: 'form-control' %></td>
       <td><%= recipe_ingredient.number_field   :gram,     class: 'form-control' %></td>

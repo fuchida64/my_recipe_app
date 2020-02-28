@@ -5,6 +5,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new
     @user_ingredient = UserIngredient.new
     @user_ingredients = UserIngredient.where(user_id: current_user.id)
+    @ingredients = Ingredient.all
   end
 
   def create

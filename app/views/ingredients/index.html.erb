@@ -29,7 +29,7 @@
   </div>
 <% end %>
 
-<h3>ざいりょう一覧</h3>
+<h3>ユーザー材料一覧</h3>
 <table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
   <tr>
     <th bgcolor="#EE0000"><font color="#FFFFFF">材料名</font></th>
@@ -43,6 +43,23 @@
       <td bgcolor="#FFFFFF" valign="top" width="150"><%= ingredient.quantity %></td>
       <td bgcolor="#FFFFFF" valign="top" width="200"><%= ingredient.gram %></td>
       <td bgcolor="#FFFFFF" valign="top" width="200"><%= ingredient.expiration_date %></td>
+    </tr>
+  <% end %>
+</table>
+
+<hr>
+
+<h3>材料一覧</h3>
+<h3>ざいりょう一覧</h3>
+<table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
+  <tr>
+    <th bgcolor="#EE0000" width="150"><font color="#FFFFFF">id</font></th>
+    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">材料名</font></th>
+  </tr>
+  <% @ingredients.each do |ingredient| %>
+    <tr>
+      <td bgcolor="#FFFFFF" valign="top" width="150"><%= ingredient.id %></td>
+      <td bgcolor="#FFFFFF" valign="top" width="200"><%= ingredient.name %></td>
     </tr>
   <% end %>
 </table>
