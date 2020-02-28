@@ -1,16 +1,59 @@
+<div class="recipe-show">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">カテゴリー</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @recipe.category.name %></li>
+    </ol>
+  </nav>
 
-<p>レシピ名：<%= @recipe.title %></p>
-<%= image_tag @recipe.image.url, :size =>'320x480' if @recipe.image? %>
-<p>カテゴリー：<%= @recipe.category.name %></p>
+  <div class="row">
+    <ul class="nav justify-content-end">
+      <li class="nav-item"><a href="#" class="nav-link">favorite</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">cook</a></li>
+      <% if @recipe.user.id == current_user.id %>
+        <li class="nav-item"><a href="#" class="nav-link">edit</a></li>
+      <% end %>
+    </ul>
+  </div>
 
-<p>材料</p>
-<p><%= @recipe.servings_for %>人分</p>
-<% @recipe.recipe_ingredients.each.with_index(1) do |ingredient, i| %>
-  <p><%= "#{i} #{ingredient.ingredient.name} : #{ingredient.quantity}" %></p>
-<% end %>
+  <div class="row headline">
+    <h3 class="col-sm-9"><%= @recipe.title %></h3>
+    <p class="text-right col-sm-3"> - <%= @recipe.user.name %></p>
+  </div>
 
-<p>手順</p>
-<% @recipe.recipe_procedures.each.with_index(1) do |procedure, i| %>
-  <p><%= "#{i} #{procedure.instruction}" %></p>
-  <p><%= image_tag procedure.image.url, :size =>'50x50' if procedure.image? %></p>
-<% end %>
+  <div class="row">
+    <p class="col-sm-9"><%= @recipe.description %></p>
+    <p class="text-right col-sm-3"><%= "約 #{@recipe.cooking_time} 分"%></p>
+    <div class="recipe-image col-sm-6">
+      <%= image_tag @recipe.image.url, :size =>'320x480' if @recipe.image? %>
+    </div>
+    <div class="col-sm-5">
+      <h4>材料</h4>
+      <p><%= @recipe.servings_for %>人分</p>
+      <table class="table table-sm">
+        <% @recipe.recipe_ingredients.each do |ingredient| %>
+          <tr>
+            <td>・<%= ingredient.ingredient.name %></td>
+            <td>
+              <%= ingredient.quantity %>
+              <%= "（#{ingredient.gram}g）" if ingredient.gram? %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <h4>作り方</h4>
+    <table class="table">
+      <% @recipe.recipe_procedures.each.with_index(1) do |procedure, i| %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= procedure.instruction %></td>
+          <td><%= image_tag procedure.image.url, class: 'procedure-image' if procedure.image? %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

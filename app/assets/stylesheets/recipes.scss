@@ -2,60 +2,90 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.recipe-body {
+
+/* recipe new */
+.recipe-new {
   width: 90%;
   margin:20px auto 70px;
+
+  input#recipe-image {
+    display: none !important;
+  }
+
+  .image-label {
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    height: 300px;
+
+    .img-box {
+      width: 100%;
+      height: 280px;
+      background-color: white;
+      text-align: center;
+      position:relative;
+
+      img {
+        max-width: 100%;
+        max-height: 280px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%,-50%);
+        -webkit-transform : translate(-50%,-50%);
+        transform : translate(-50%,-50%);
+        text-align: center;
+      }
+    }
+  }
+  .ingredient-table {
+    margin-top: 20px;
+  }
+
+  .servings-for-form {
+    margin-top: 24px;
+  }
 
   .actions {
     text-align: right;
   }
 }
-.image-label {
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  position: relative;
-  width: 100%;
-  height: 300px;
 
-  .img-box {
-    width: 100%;
-    height: 280px;
+/* recipe show */
+.recipe-show {
+  width: 84%;
+  margin:20px auto 70px;
+
+  .justify-content-end {
+    text-align: right;
+  }
+  .nav-item {
+    display: inline-block;
+  }
+
+  .breadcrumb {
     background-color: white;
-    text-align: center;
-    position:relative;
-
-    img {
-      max-width: 100%;
-      max-height: 280px;
-      background-color: white;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -ms-transform: translate(-50%,-50%);
-      -webkit-transform : translate(-50%,-50%);
-      transform : translate(-50%,-50%);
-      text-align: center;
-    }
-    i {
-      font-size: 20px;
+    margin-bottom: 0px;
+  }
+  .headline {
+    border-bottom: 2px solid;
+    margin-bottom: 20px;
+    position: relative;
+    p {
       position: absolute;
       bottom: 0;
-      left: 0;
-      color: rgba(0, 0, 0, 0.5);
+      right: 0;
     }
   }
-}
-
-input#recipe-image {
-  display: none !important;
-}
-
-.ingredient-table {
-  margin-top: 20px;
-}
-
-.servings-for-form {
-  margin-top: 24px;
+  .recipe-image {
+    text-align: center;
+  }
+  .procedure-image {
+    max-width: 150px;
+    max-height: 150px;
+  }
 }
