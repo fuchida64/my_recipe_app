@@ -71,4 +71,6 @@ gem 'nested_form_fields'
 # imgage upload
 gem 'carrierwave',             '1.2.2'
 gem "mini_magick", ">= 4.9.4"
+# support design
+gem 'bootstrap-sass'
 

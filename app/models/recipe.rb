@@ -11,4 +11,7 @@ class Recipe < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  # validation
+  #title max 20
+
 end

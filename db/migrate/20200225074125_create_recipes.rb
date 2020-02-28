@@ -6,7 +6,6 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.string :description
       t.integer :servings_for
       t.integer :cooking_time
-      t.integer :public
       t.integer :daily_access
       t.integer :weekly_access
       t.integer :monthly_access

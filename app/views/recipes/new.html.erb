@@ -1,40 +1,80 @@
-<h1>レシピ作成ページ</h1>
-<%= form_for @recipe do |recipe| %>
-  <div class="field">
-      <%= recipe.label :title, "タイトル" %><br />
-      <%= recipe.text_field :title %>
-  </div>
 
-  <div class="field">
-    <%= recipe.label :image, "画像" %><br />
-    <%= recipe.file_field :image %>
-  </div>
+<div class="recipe-body">
+  <h1>レシピ作成</h1>
+  <hr>
+  <%= form_for @recipe do |recipe| %>
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <%= recipe.label :title, "タイトル" %><br />
+        <%= recipe.text_field :title, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= recipe.label :description, "説明" %><br />
-    <%= recipe.text_field :description %>
-  </div>
+      <%= fields_for @category do |category| %>
+        <div class="form-group col-sm-2">
+          <%= category.label :name, "カテゴリー" %><br />
+          <%= category.text_field :name, class: 'form-control' %>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= recipe.label :cooking_time, "時間" %><br />
-    <%= recipe.number_field :cooking_time %>
-  </div>
-
-  <%= fields_for @category do |category| %>
-    <div class="field">
-      <%= category.label :name, "カテゴリー" %><br />
-      <%= category.text_field :name %>
+      <div class="form-group col-sm-2">
+        <%= recipe.label :cooking_time, "調理時間" %><br />
+        <%= recipe.number_field :cooking_time, class: 'form-control' %>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <div class="description-form">
+          <%= recipe.label :description, "説明" %><br />
+          <%= recipe.text_field :description, class: 'form-control' %><br />
+        </div>
+
+        <div class="image-form">
+          <%= recipe.label :image, "料理の写真" %><br />
+          <label class="image-label" for="recipe-image">
+            <div class="img-box">
+              <img class="preview-recipe-image" >
+            </div>
+          </label>
+          <%= recipe.file_field :image, id: 'recipe-image'%>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <div class="form-inline servings-for-form">
+          <%= recipe.text_field :servings_for, class: 'form-control' %>
+          <b>人分</b>
+        </div>
+        <%= render 'recipe_ingredients_fields', f: recipe %>
+      </div>
+    </div>
+
+    <h4>作り方</h4>
+    <hr>
+    <div class="row">
+      <div class="form-group col-sm-10">
+        <%= render 'recipe_procedures_fields', f: recipe %>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="actions">
+        <%= recipe.submit 'レシピ作成', class: 'btn btn-success' %>
+      </div>
+    </div>
+
   <% end %>
+</div>
 
-  <div class="field">
-    <%= recipe.number_field :servings_for %> 人数
-  </div>
 
-  <%= render 'recipe_ingredients_fields', f: recipe %>
-  <%= render 'recipe_procedures_fields', f: recipe %>
-
-  <div class="actions">
-    <%= recipe.submit '追加' %>
-  </div>
-<% end %>
+<script>
+  $('input[type=file]').on('change', function (e) {
+    var str = $(this).attr("id");
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $(".preview-" + str).attr('src', e.target.result);
+      }
+      reader.readAsDataURL(e.target.files[0]);
+  });
+</script>
