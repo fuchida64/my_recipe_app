@@ -1,22 +1,23 @@
-<h1>レシピ一覧</h1>
 
-<table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
-  <tr>
-    <th bgcolor="#EE0000"><font color="#FFFFFF">id</font></th>
-    <th bgcolor="#EE0000" width="150"><font color="#FFFFFF">タイトル</font></th>
-    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">ユーザー名</font></th>
-    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">カテゴリー</font></th>
-    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF"></font></th>
-  </tr>
-  <% @recipes.each do |recipe| %>
-    <tr>
-      <td bgcolor="#FFFFFF" valign="top" width="150"><%= recipe.id %></td>
-      <td bgcolor="#FFFFFF" valign="top" width="200"><%= recipe.title %></td>
-      <td bgcolor="#FFFFFF" valign="top" width="200"><%= recipe.user.name %></td>
-      <td bgcolor="#FFFFFF" valign="top" width="200"><%= recipe.category.name %></td>
-      <td bgcolor="#FFFFFF" valign="top" width="200">
-        <%= link_to 'show', recipe_path(recipe) %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+
+<div class="recipe-index">
+  <h2>レシピ一覧</h2>
+  <hr>
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4">
+      <% @recipes.each do |recipe| %>
+        <div class="card h-100">
+          <%= image_tag recipe.image.url, class: "ard-img-top", alt: "Card image cap" if recipe.image? %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to recipe.title, recipe_path(recipe), class: "card-link" %>
+            </h5>
+            <h6 class="card-subtitle text-muted"><%= recipe.category.name %></h6>
+            <p class="card-text"><%= recipe.description %> / <%= recipe.user.name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

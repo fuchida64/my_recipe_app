@@ -92,8 +92,8 @@ class RecipesController < ApplicationController
 
     #材料存在チェック・作成
     # 初期化
-    new_recipe_params = recipe_params
-    new_recipe_params[:recipe_ingredients_attributes].each do |i, ingredient|
+    modified_recipe_params = recipe_params
+    modified_recipe_params[:recipe_ingredients_attributes].each do |i, ingredient|
 
       @ingredient = Ingredient.new(name: ingredient[:name])
 
@@ -111,7 +111,7 @@ class RecipesController < ApplicationController
       end
     end
 
-    if @recipe.update(new_recipe_params)
+    if @recipe.update(modified_recipe_params)
       flash[:update] = "recipe update success"
       redirect_to recipe_path(@recipe)
     else
