@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_many :user_ingredients, dependent: :destroy
     has_many :ingredients, through: :user_ingredients
     has_many :recipes, dependent: :destroy
+    has_many :menus, dependent: :destroy
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
