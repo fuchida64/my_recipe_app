@@ -6,10 +6,10 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.string :description
       t.integer :servings_for
       t.integer :cooking_time
-      t.integer :daily_access
-      t.integer :weekly_access
-      t.integer :monthly_access
-      t.integer :total_access
+      t.integer :daily_access,   default: 0
+      t.integer :weekly_access,  default: 0
+      t.integer :monthly_access, default: 0
+      t.integer :total_access,   default: 0
       t.integer :user_id
       t.integer :category_id
 

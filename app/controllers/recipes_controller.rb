@@ -61,6 +61,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @menu = Menu.new
+    Recipe.add_recipe_access(@recipe)
   end
 
   def edit

@@ -1,3 +1,57 @@
-<h1>Hello, My_recipe</h1>
 
+<!-- 参考サイト https://getbootstrap.com/docs/4.2/examples/blog/ -->
 
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
+    <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+    <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+  </div>
+</div>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main bg-light rounded">
+      <h3 class="p-3 font-italic">レシピランキング</h3>
+
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1" aria-selected="true">日間</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="item2-tab" data-toggle="tab" href="#item2" role="tab" aria-controls="item2" aria-selected="false">週間</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="item3-tab" data-toggle="tab" href="#item3" role="tab" aria-controls="item3" aria-selected="false">月間</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
+          <%= render 'recipes/access_ranking', recipes: @daily_recipes %>
+        </div>
+        <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
+          <%= render 'recipes/access_ranking', recipes: @weekly_recipes %>
+        </div>
+        <div class="tab-pane fade" id="item3" role="tabpanel" aria-labelledby="item3-tab">
+          <%= render 'recipes/access_ranking', recipes: @monthly_recipes %>
+        </div>
+      </div>
+    </div>
+
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-3 mb-3 bg-light rounded">
+        <h4 class="font-italic">About</h4>
+        <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+      </div>
+
+      <div class="p-3 bg-light rounded">
+        <h4 class="font-italic">カテゴリー</h4>
+        <ol class="list-unstyled mb-0">
+          <% @categories.each do |category| %>
+            <li><a href="#"><%= category.name %></a></li>
+          <% end %>
+        </ol>
+      </div>
+    </aside>
+  </div>
+</main>

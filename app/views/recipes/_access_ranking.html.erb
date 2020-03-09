@@ -1,0 +1,10 @@
+
+
+<table class="table table-hover">
+  <% recipes.each do |recipe| %>
+    <tr>
+      <td><%= recipe.total_access %></td>
+      <td><%= link_to recipe.title, recipe_path(recipe) %></td>
+    </tr>
+  <% end %>
+</table>
