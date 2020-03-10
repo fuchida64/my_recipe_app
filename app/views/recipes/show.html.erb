@@ -1,27 +1,21 @@
-<div class="recipe-show">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">カテゴリー</a></li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @recipe.category.name %></li>
-    </ol>
-  </nav>
+<div class="recipe-show rounded">
 
-  <div class="row">
-    <ul class="nav justify-content-end">
-      <li class="nav-item"><a href="#" class="nav-link">favorite</a></li>
-      <% if @recipe.user.id == current_user.id %>
-        <li class="nav-item">
-          <%= link_to "edit", edit_recipe_path(@recipe), class: "nav-link" %>
-        </li>
+  <%= render 'categories/breadcrumb', recipe: @recipe %>
+
+  <div class="d-flex justify-content-end">
+    <div class="my-box w-25"><a class="p-2 text-muted" href="#">favorite</a></div>
+    <% if @recipe.user.id == current_user.id %>
+      <div class="my-box w-25">
+        <%= link_to "編集", edit_recipe_path(@recipe), class: "p-2 text-muted" %>
+      </div>
+    <% end %>
+    <div class="my-box w-25">
+      <%= form_for @menu do |menu| %>
+        <%= menu.hidden_field :recipe_id, value: @recipe.id %>
+        <%= menu.select :servings_for, [['1',1],['2',2],['3',3],['4',4],['5',5]], class: "form-control" %> 人分
+        <%= menu.submit '作る', class: "btn btn-outline-warning" %>
       <% end %>
-      <li class="nav-item">
-        <%= form_for @menu do |menu| %>
-          <%= menu.hidden_field :recipe_id, value: @recipe.id %>
-          <%= menu.select :servings_for, [['1',1],['2',2],['3',3],['4',4],['5',5]] %> 人分
-          <%= menu.submit 'cook', class: "nav-link" %>
-        <% end %>
-      </li>
-    </ul>
+    </div>
   </div>
 
   <div class="row headline">
@@ -33,11 +27,11 @@
     <p class="col-sm-9"><%= @recipe.description %></p>
     <p class="text-right col-sm-3"><%= "約 #{@recipe.cooking_time} 分"%></p>
     <div class="recipe-image col-sm-6">
-      <%= image_tag @recipe.image.url, :size =>'320x480' if @recipe.image? %>
+      <%= image_tag @recipe.image.url if @recipe.image? %>
     </div>
     <div class="col-sm-5">
       <h4>材料</h4>
-      <p><%= @recipe.servings_for %>人分</p>
+      <p>　<%= @recipe.servings_for %>人分</p>
       <table class="table table-sm">
         <% @recipe.recipe_ingredients.each do |ingredient| %>
           <tr>
@@ -52,9 +46,9 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row row-procedure">
     <h4>作り方</h4>
-    <table class="table">
+    <table class="table table-procedure">
       <% @recipe.recipe_procedures.each.with_index(1) do |procedure, i| %>
         <tr>
           <td><%= i %></td>

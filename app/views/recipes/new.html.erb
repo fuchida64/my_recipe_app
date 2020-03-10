@@ -1,5 +1,5 @@
 
-<div class="recipe-new">
+<div class="recipe-new rounded">
   <h1>レシピ作成</h1>
   <hr>
   <%= form_for @recipe do |recipe| %>
@@ -58,7 +58,7 @@
     </div>
     <hr>
 
-    <div class="row submit-row">
+    <div class="row submit-row d-flex justify-content-end">
       <div class="actions">
         <%= recipe.submit 'レシピ作成', class: 'btn btn-success' %>
       </div>
