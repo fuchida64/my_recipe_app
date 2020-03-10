@@ -12,20 +12,20 @@
 
 ActiveRecord::Schema.define(version: 2020_03_06_100944) do
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "ingredients", force: :cascade do |t|
+  create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_ingredients_on_name", unique: true
   end
 
-  create_table "menus", force: :cascade do |t|
+  create_table "menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "servings_for"
     t.integer "user_id"
     t.integer "recipe_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_100944) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_ingredients", force: :cascade do |t|
+  create_table "recipe_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "quantity"
     t.integer "gram"
     t.integer "recipe_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_100944) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_procedures", force: :cascade do |t|
+  create_table "recipe_procedures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "instruction"
     t.string "image"
     t.integer "recipe_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_100944) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipes", force: :cascade do |t|
+  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "image"
     t.string "description"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_100944) do
     t.index ["title"], name: "index_recipes_on_title", unique: true
   end
 
-  create_table "user_ingredients", force: :cascade do |t|
+  create_table "user_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "quantity"
     t.integer "gram"
     t.date "expiration_date"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_100944) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
