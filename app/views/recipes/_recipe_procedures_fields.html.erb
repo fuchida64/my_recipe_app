@@ -1,5 +1,5 @@
 
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered procedure-table">
   <tbody>
     <tr>
        <th>手順</th>
@@ -7,10 +7,29 @@
        <th></th>
     </tr>
     <%= f.nested_fields_for :recipe_procedures, wrapper_tag: :tr do |procedure| %>
-      <td><%= procedure.text_field   :instruction,     class: 'form-control' %></td>
-      <td><%= procedure.file_field   :image,    class: 'form-control' %></td>
-      <td><%= procedure.remove_nested_fields_link '×', class: 'btn btn-danger', role: 'button' %></td>
+      <td><%= procedure.text_area   :instruction,     class: 'form-control' %></td>
+      <td>
+        <%= procedure.label :image, class: 'procedure-image-label' do %>
+          <div class="procedure-img-box">
+            <img class="preview-procedure-image" >
+          </div>
+        <% end %>
+        <%= procedure.file_field   :image, class: 'form-control' %>
+      </td>
+      <td class="td-delete"><%= procedure.remove_nested_fields_link '×', class: 'btn btn-outline-danger', role: 'button' %></td>
     <% end %>
   </tbody>
 </table>
 <%= f.add_nested_fields_link :recipe_procedures, '追加', class: 'btn btn-primary', role: 'button' %>
+
+<script>
+  $(document).on('change', 'input[type=file]', function (e) {
+    var str = $(this).siblings('.procedure-image-label');
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $(str).find('.preview-procedure-image').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+</script>

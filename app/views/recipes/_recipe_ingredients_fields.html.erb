@@ -10,10 +10,10 @@
     </tr>
     <%= f.nested_fields_for :recipe_ingredients, wrapper_tag: :tr do |recipe_ingredient| %>
       <%= recipe_ingredient.hidden_field :ingredient_id %>
-      <td><%= recipe_ingredient.text_field   :name,     class: 'form-control' %></td>
-      <td><%= recipe_ingredient.text_field   :quantity,     class: 'form-control' %></td>
+      <td class="td-name"><%= recipe_ingredient.text_field   :name,     class: 'form-control' %></td>
+      <td class="td-quantity"><%= recipe_ingredient.text_field   :quantity,     class: 'form-control' %></td>
       <td><%= recipe_ingredient.number_field   :gram,     class: 'form-control' %></td>
-      <td><%= recipe_ingredient.remove_nested_fields_link '×', class: 'btn btn-danger', role: 'button' %></td>
+      <td class="td-delete"><%= recipe_ingredient.remove_nested_fields_link '×', class: 'btn btn-outline-danger', role: 'button' %></td>
     <% end %>
   </tbody>
 </table>

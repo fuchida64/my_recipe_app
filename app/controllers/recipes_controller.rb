@@ -15,34 +15,21 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
 
-    @category = Category.new(category_params)
-
     #カテゴリー存在チェック・作成
-    if @existing_category = Category.find_by(name: category_params[:name])
-      flash[:existing_category] = "#{category_params[:name]} exits"
-      @recipe.category_id = @existing_category.id
+    @category = Category.new(category_params)
+    @recipe.category_id = Category.category_id(@category)
 
-    elsif @category.save
-      flash[:category_success] = "category create success"
-      @recipe.category_id = @category.id
-
-    else
+    if @recipe.category_id == 0
       flash[:fail] = "category create fail"
       render 'new'
     end
 
     #材料存在チェック・作成
-    @recipe.recipe_ingredients.each do |ingredient|
-      @ingredient = Ingredient.new(name: ingredient.name)
-      if @existing_ingredient = Ingredient.find_by(name: ingredient.name)
-        flash[:existing_ingredient] = "#{ingredient.name} exits"
-        ingredient.ingredient_id = @existing_ingredient.id
+    @recipe.recipe_ingredients.each do |recipe_ingredient|
+      @ingredient = Ingredient.new(name: recipe_ingredient.name)
+      recipe_ingredient.ingredient_id = Ingredient.ingredient_id(@ingredient)
 
-      elsif @ingredient.save
-        flash[:ingredient_success] = "ingredient create success"
-        ingredient.ingredient_id = @ingredient.id
-
-      else
+      if recipe_ingredient.ingredient_id == 0
         flash[:fail] = "ingredient create fail"
         render 'new'
       end
@@ -51,7 +38,7 @@ class RecipesController < ApplicationController
     #レシピ作成
     if @recipe.save
       flash[:create] = "recipe create success"
-      redirect_to recipes_path
+      redirect_to recipe_path(@recipe)
     else
       flash[:fail] = "recipe create fail"
       render 'new'
@@ -68,6 +55,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @category = @recipe.category
     recipe_ingredients = @recipe.recipe_ingredients
+
     recipe_ingredients.each do |recipe_ingredient|
       recipe_ingredient.name = recipe_ingredient.ingredient.name
     end
@@ -76,18 +64,12 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @category = @recipe.category
-    @new_category = Category.new(category_params)
 
     #カテゴリー存在チェック・作成
-    if @existing_category = Category.find_by(name: category_params[:name])
-      flash[:existing_category] = "#{category_params[:name]} exits"
-      @recipe.category_id = @existing_category.id
+    @new_category = Category.new(category_params)
+    @recipe.category_id = Category.category_id(@new_category)
 
-    elsif @new_category.save
-      flash[:category_success] = "category create success"
-      @recipe.category_id = @new_category.id
-
-    else
+    if @recipe.category_id == 0
       flash[:fail] = "category create fail"
       render 'new'
     end
@@ -123,6 +105,7 @@ class RecipesController < ApplicationController
   end
 
   private
+
     def recipe_params
       params.require(:recipe).permit(
         :title, :image, :description, :cooking_time, :servings_for,

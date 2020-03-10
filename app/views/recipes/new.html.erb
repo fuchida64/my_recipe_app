@@ -10,7 +10,7 @@
       </div>
 
       <%= fields_for @category do |category| %>
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
           <%= category.label :name, "カテゴリー" %><br />
           <%= category.text_field :name, class: 'form-control' %>
         </div>
@@ -26,7 +26,7 @@
       <div class="form-group col-sm-6">
         <div class="description-form">
           <%= recipe.label :description, "説明" %><br />
-          <%= recipe.text_field :description, class: 'form-control' %><br />
+          <%= recipe.text_area :description, class: 'form-control' %><br />
         </div>
 
         <div class="image-form">
@@ -58,7 +58,7 @@
     </div>
     <hr>
 
-    <div class="row">
+    <div class="row submit-row">
       <div class="actions">
         <%= recipe.submit 'レシピ作成', class: 'btn btn-success' %>
       </div>
@@ -69,12 +69,13 @@
 
 
 <script>
-  $('input[type=file]').on('change', function (e) {
-    var str = $(this).attr("id");
-      var reader = new FileReader();
-      reader.onload = function (e) {
-          $(".preview-" + str).attr('src', e.target.result);
-      }
-      reader.readAsDataURL(e.target.files[0]);
+  $(document).on('change', 'input[type=file]', function (e) {
+    var str = $(this).siblings('.image-label');
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $(str).find('.preview-recipe-image').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
   });
 </script>
