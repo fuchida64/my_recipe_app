@@ -11,6 +11,7 @@
       <td>
         <%= procedure.label :image, class: 'procedure-image-label' do %>
           <div class="procedure-img-box">
+            <%= image_tag procedure.object.image.url if procedure.object.image? %>
             <img class="preview-procedure-image" >
           </div>
         <% end %>
