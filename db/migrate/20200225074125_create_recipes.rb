@@ -1,6 +1,6 @@
 class CreateRecipes < ActiveRecord::Migration[5.2]
   def change
-    create_table :recipes do |t|
+    create_table :recipes, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.string :title
       t.string :image
       t.string :description

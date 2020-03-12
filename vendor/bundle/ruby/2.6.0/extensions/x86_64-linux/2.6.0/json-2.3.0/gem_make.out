@@ -1,0 +1,13 @@
+current directory: /var/www/html/my_recipe_app/vendor/bundle/ruby/2.6.0/gems/json-2.3.0/ext/json
+/home/ec2-user/.rbenv/versions/2.6.2/bin/ruby -I /home/ec2-user/.rbenv/versions/2.6.2/lib/ruby/2.6.0 -r ./siteconf20200312-29035-jcntlf.rb extconf.rb
+creating Makefile
+
+current directory: /var/www/html/my_recipe_app/vendor/bundle/ruby/2.6.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /var/www/html/my_recipe_app/vendor/bundle/ruby/2.6.0/gems/json-2.3.0/ext/json
+make "DESTDIR="
+make: `all' に対して行うべき事はありません.
+
+current directory: /var/www/html/my_recipe_app/vendor/bundle/ruby/2.6.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" install
