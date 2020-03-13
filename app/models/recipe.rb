@@ -27,12 +27,15 @@ class Recipe < ApplicationRecord
   def self.update_all_recipe_access
     #日間アクセス数リセット
     Recipe.update_all("daily_access = 0")
-
     #週間アクセス数リセット
     Recipe.update_all("weekly_access = 0") if Date.current.monday?
-
     #月間リセット
     Recipe.update_all("monthly_access = 0") if Date.current.day == 1
+  end
+
+  def self.search(search)
+    return Recipe.all unless search
+    Recipe.where(['title LIKE ?', "%#{search}%"])
   end
 
 end

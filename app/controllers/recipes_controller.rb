@@ -4,6 +4,10 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def search
+    @recipes = Recipe.search(params[:search])
+  end
+
   def new
     @recipe = Recipe.new
     @category = Category.new

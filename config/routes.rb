@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :new, :create, :show, :edit, :update]
   resources :categories, only: [:index]
   resources :menus, only: [:index, :create]
+
+  get '/search', to: 'recipes#search', as: 'search'
 end
