@@ -4,7 +4,7 @@
 
   <div class="d-flex justify-content-end">
     <div class="my-box w-25"><a class="p-2 text-muted" href="#">favorite</a></div>
-    <% if @recipe.user.id == current_user.id %>
+    <% if user_signed_in? && @recipe.user.id == current_user.id %>
       <div class="my-box w-25">
         <%= link_to "編集", edit_recipe_path(@recipe), class: "p-2 text-muted" %>
       </div>
