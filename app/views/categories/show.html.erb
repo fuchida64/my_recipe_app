@@ -1,0 +1,18 @@
+
+<div class="category-show">
+  <% if @category %>
+    <h2>カテゴリー：<%= @category.name %></h2>
+
+    <div class="row row-cols-1 row-cols-md-3 recipe-table">
+      <% if @recipes %>
+        <%= render 'recipes/access_ranking', recipes: @recipes %>
+      <% else %>
+        <p class="not-exist">該当するレシピが見つかりませんでした。</p>
+      <% end %>
+    </div>
+
+  <% else %>
+    <p class="not-exist">該当するカテゴリーが見つかりませんでした。</p>
+  <% end %>
+</div>
+

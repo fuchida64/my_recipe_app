@@ -46,7 +46,9 @@
         <h4 class="">カテゴリー</h4>
         <ol class="list-unstyled mb-0">
           <% @categories.each do |category| %>
-            <li><a href="#"><%= "#{category.name}（#{category.recipes.count}）" %></a></li>
+            <li>
+              <%= link_to "#{category.name}（#{category.recipes.count}）", "/categories/#{category.name}" %>
+            </li>
           <% end %>
         </ol>
       </div>
