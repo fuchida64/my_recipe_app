@@ -1,3 +1,71 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.site-description {
+  background-image: url("/images/home.jpeg");
+  background-repeat: no-repeat;
+  background-position: 84%;
+  background-color: antiquewhite;
+}
+.colored {
+  border: 1px solid #e7336e;
+}
+.nav-link.active {
+    color: #e7336e !important;
+}
+.blog-main {
+  margin-bottom: 20px;
+}
+.table {
+  td {
+    position: relative;
+  }
+  tr:hover {
+    background-color: antiquewhite;
+  }
+  .recipe-img {
+    width: 160px;
+    height: 160px;
+    margin: 0;
+    display: inline-block;
+    position:relative;
+
+    img {
+      max-width: 100%;
+      max-height: 160px;
+      background-color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%,-50%);
+      -webkit-transform : translate(-50%,-50%);
+      transform : translate(-50%,-50%);
+      text-align: center;
+    }
+  }
+  .recipe-info {
+    position: absolute;
+    top: 10px;
+    left: 200px;
+    height: 160px;
+    width: 70%;
+
+    .title {
+      margin: 10px 0;
+      font-size: 20px;
+      font-weight: bold;
+      color: #e7336e;
+      text-decoration: underline;
+
+      a {
+        color: #e7336e;
+      }
+    }
+    .details {
+      position: absolute;
+      right: 30px;
+      bottom: 0px;
+    }
+  }
+}

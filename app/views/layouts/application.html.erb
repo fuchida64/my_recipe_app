@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>MyRecipeApp</title>
+    <title>MyRecipe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <!-- Required meta tags -->
@@ -23,6 +23,8 @@
       <% end %>
 
       <%= yield %>
+
+      <%= render 'layouts/footer' %>
     </div>
 
     <!-- Optional JavaScript -->

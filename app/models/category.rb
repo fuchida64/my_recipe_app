@@ -10,7 +10,6 @@ class Category < ApplicationRecord
     elsif category.save
       category_id = category.id
     end
-
     category_id
   end
 
