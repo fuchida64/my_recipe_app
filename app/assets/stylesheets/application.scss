@@ -15,8 +15,32 @@
  */
 
 body {
-  background-color: #f1f3f5;
+  a {
+    color: #555555;
+  }
+  a:hover {
+    color: #e7336e;
+  }
   header {
-    border-bottom: 1px solid #e5e5e5;
+    height: 90px;
+    line-height: 50px;
+
+    .navbar-brand {
+      font-size: 30px;
+      font-family: "Ludica Sans Unicode";
+    }
+    .search-group {
+      margin: 10px 0 0 30px;
+
+      input#search {
+        width: 240px;
+      }
+    }
+    li.nav-item {
+      margin: 0 5px;
+    }
+  }
+  footer {
+    height: 160px;
   }
 }
