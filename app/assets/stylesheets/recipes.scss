@@ -7,20 +7,28 @@
 .form-control {
   padding: 5px;
 }
-/* recipe index */
 
+/* recipe index */
 .recipe-index {
   width: 90%;
-  margin:20px auto 70px;
-  .card {
-    border: 1px solid #ccc;
+  margin:20px auto 50px;
+  padding: 5px 3%;
+  .recipe-table {
+    margin-top: 20px;
+    .not-exist {
+      margin-left: 30px;
+    }
+    .table .recipe-info .details {
+      right: 70px;
+    }
   }
 }
+
 /* recipe new */
 .recipe-new {
   width: 90%;
-  margin: 20px auto 70px;
-  padding: 40px 3%;
+  margin: 20px auto 50px;
+  padding: 5px 3%;
   background-color: white;
 
   label {
@@ -138,7 +146,7 @@
 /* recipe show */
 .recipe-show {
   width: 90%;
-  margin:20px auto 70px;
+  margin:20px auto 50px;
   padding: 5px 3%;
   background-color: white;
 

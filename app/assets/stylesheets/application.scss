@@ -36,8 +36,15 @@ body {
         width: 240px;
       }
     }
+    .navbar-collapse {
+        z-index: 9999;
+        background-color: white;
+    }
     li.nav-item {
       margin: 0 5px;
+    }
+    .nav-link:hover {
+        color: #e7336e !important;
     }
   }
   footer {

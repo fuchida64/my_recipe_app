@@ -1,3 +1,19 @@
 // Place all the styles related to the Menus controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* menu index */
+.menu-index {
+  width: 90%;
+  margin:20px auto 50px;
+  padding: 5px 3%;
+  .recipe-table {
+    margin-top: 20px;
+    .not-exist {
+      margin-left: 30px;
+    }
+    .table .recipe-info .details {
+      right: 70px;
+    }
+  }
+}

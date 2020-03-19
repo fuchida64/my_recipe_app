@@ -1,41 +1,49 @@
 
 <div class="menu-index">
   <h2>献立リスト</h2>
-  <hr>
-
-  <div class="row row-cols-1 row-cols-md-3">
-    <div class="col mb-4">
-      <% @menus.each do |menu| %>
-        <div class="card h-100">
-          <%= image_tag menu.recipe.image.url, class: "ard-img-top", alt: "Card image cap" if menu.recipe.image? %>
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= link_to menu.recipe.title, recipe_path(menu.recipe), class: "card-link" %>
-            </h5>
-            <h6 class="card-subtitle text-muted"><%= menu.recipe.category.name %></h6>
-            <p class="card-text"><%= menu.recipe.user.name %></p>
-            <p class="card-text"><%= menu.servings_for %> 人分 </p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <hr>
-
+  <div class="row row-cols-1 row-cols-md-3 recipe-table">
     <table class="table">
-      <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>quantity</th>
-      </tr>
-
-      <% @ingredients.each do |ingredient| %>
+      <% @menus.each do |menu| %>
         <tr>
-          <td><%= ingredient[:id] %></td>
-          <td><%= ingredient[:name] %></td>
-          <td><%= ingredient[:quantity] %></td>
+          <td class="row">
+            <div class="col-md-4 recipe-img">
+              <%= image_tag menu.recipe.image.url if menu.recipe.image? %>
+            </div>
+            <div class="col-md-6 recipe-info">
+              <div class="title">
+                <%= link_to menu.recipe.title, recipe_path(menu.recipe) %>
+              </div>
+              <div class="description">
+                <%= menu.recipe.description %>
+              </div>
+              <div class="details">
+                <%= "#{menu.recipe.user.name}  /  調理時間 #{menu.recipe.cooking_time.to_s} 分" %>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <%= menu.servings_for %> 人分
+            </div>
+          </td>
         </tr>
       <% end %>
     </table>
-
   </div>
+  <hr>
+
+  <table class="table">
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>quantity</th>
+    </tr>
+
+    <% @ingredients.each do |ingredient| %>
+      <tr>
+        <td><%= ingredient[:id] %></td>
+        <td><%= ingredient[:name] %></td>
+        <td><%= ingredient[:quantity] %></td>
+      </tr>
+    <% end %>
+  </table>
+
 </div>
