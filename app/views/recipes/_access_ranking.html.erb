@@ -2,11 +2,11 @@
 <table class="table">
   <% recipes.each do |recipe| %>
     <tr>
-      <td>
-        <div class="recipe-img">
+      <td class="row">
+        <div class="col-md-4 recipe-img">
           <%= image_tag recipe.image.url if recipe.image? %>
         </div>
-        <div class="recipe-info">
+        <div class="col-md-8 recipe-info">
           <div class="title">
             <%= link_to recipe.title, recipe_path(recipe) %>
           </div>

@@ -17,13 +17,10 @@
 .blog-main {
   margin-bottom: 20px;
 }
+.tab-content tr:hover {
+  background-color: antiquewhite;
+}
 .table {
-  td {
-    position: relative;
-  }
-  tr:hover {
-    background-color: antiquewhite;
-  }
   .recipe-img {
     width: 160px;
     height: 160px;
@@ -45,11 +42,7 @@
     }
   }
   .recipe-info {
-    position: absolute;
-    top: 10px;
-    left: 200px;
     height: 160px;
-    width: 70%;
 
     .title {
       margin: 10px 0;
