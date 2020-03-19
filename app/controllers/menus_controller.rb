@@ -25,9 +25,20 @@ class MenusController < ApplicationController
     @menu = Menu.new(menu_params)
     @menu.user_id = current_user.id
 
-    if @menu.save
+    @same_menu = Menu.where(user_id: current_user.id).where(recipe_id: @menu.recipe_id)
+
+    # 同じレシピが存在したら、人数を更新
+    if @same_menu.length > 0
+      menu = Menu.find(@same_menu[0][:id])
+      menu.update_attribute(:servings_for, menu.servings_for + @menu.servings_for)
+
+      flash[:notice] = "menu update success"
+      redirect_to menus_path
+
+    elsif @menu.save
       flash[:notice] = "#{@menu.recipe.title} add success"
       redirect_to menus_path
+
     else
       flash[:alert] = "menu add fail"
       redirect_back(fallback_location: root_path)
