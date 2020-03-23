@@ -32,18 +32,34 @@ class MenusController < ApplicationController
       menu = Menu.find(@same_menu[0][:id])
       menu.update_attribute(:servings_for, menu.servings_for + @menu.servings_for)
 
-      flash[:notice] = "menu update success"
+      flash[:success] = "menu update success"
       redirect_to menus_path
 
     elsif @menu.save
-      flash[:notice] = "#{@menu.recipe.title} add success"
+      flash[:success] = "#{@menu.recipe.title} add success"
       redirect_to menus_path
 
     else
       flash[:alert] = "menu add fail"
       redirect_back(fallback_location: root_path)
     end
+  end
 
+  def update
+    @menu = Menu.find(params[:id])
+    if menu_params[:servings_for].to_i < 1
+      if @menu.destroy
+        flash[:success] = "#{@menu.recipe.title}を献立から削除しました"
+      else
+        flash[:alert] = "#{@menu.recipe.title}の献立からの削除に失敗しました"
+      end
+
+    elsif @menu.update(menu_params)
+      flash[:success] = "#{@menu.recipe.title}の人数を更新しました"
+    else
+      flash[:alert] = "#{@menu.recipe.title}の人数の更新に失敗しました"
+    end
+    redirect_to menus_path
   end
 
   private

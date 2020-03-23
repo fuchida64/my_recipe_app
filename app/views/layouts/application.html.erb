@@ -19,7 +19,7 @@
       <%= render 'layouts/header' %>
 
       <% flash.each do |message_type, message| %>
-        <div class= "alert <%= message_type %>" role="alert"><%= message %></div>
+        <div class= "<%= "alert alert-#{message_type}" %>" role="alert"><%= message %></div>
       <% end %>
 
       <%= yield %>

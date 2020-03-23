@@ -21,7 +21,9 @@
               </div>
             </div>
             <div class="col-md-2">
-              <%= menu.servings_for %> 人分
+              <%= form_for menu do |f| %>
+                <%= f.select :servings_for, (0..menu.servings_for+5), {}, :onChange=>'submit(this.form);' %>
+              <% end %>
             </div>
           </td>
         </tr>
